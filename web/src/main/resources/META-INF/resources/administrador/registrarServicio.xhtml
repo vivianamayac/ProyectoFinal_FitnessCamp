@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<ui:composition template="/WEB-INF/plantilla2.xhtml">
+
+    <ui:define name="title">Add service</ui:define>
+    <ui:define name="content">
+
+        <div class="row">
+
+            <div class="col">
+                <img src="${pageContext.request.contextPath}/resources/img/services.jpg" alt="" style="height: 110%;width: 100%"/>
+            </div>
+
+
+        <div class="col">
+        <p:card styleClass="card"
+                style="border-radius: 15px;margin-left: 8%; margin-right: 20%; margin-top: 10%;width: 80%;">
+            <f:facet name="title">
+                <h2 style="text-align: center;font-family: 'Times New Roman',sans-serif;color: black"><b>ADD SERVICE</b></h2>
+            </f:facet>
+
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5" width="100%">
+
+                    <p:outputLabel for="nombre_servicio" value="Name:" style="font-family: 'Calibri',sans-serif;color: #232121;font-size: 17px"/>
+                    <p:inputText id="nombre_servicio" value="#{administradorBean.servicio.nombre}"
+                                 style="width: 85%;"
+                                 required="true" requiredMessage="Name is required"/>
+
+                    <p:outputLabel for="descripcion_producto" value="Description:" style="font-family: 'Calibri',sans-serif;color: #232121;font-size: 17px"/>
+                    <p:inputTextarea id="descripcion_producto" value="#{administradorBean.servicio.description}" style="width: 85%"
+                                     required="true" autoResize="none"
+                                     requiredMessage="La descripcion es obligatorio"/>
+
+                    <p:outputLabel for="trabajador_service" value="Worker:" style="font-family: 'Calibri',sans-serif;color: #232121;font-size: 17px"/>
+                    <p:selectOneMenu id="trabajador_service" value="#{administradorBean.servicio.trabajador}"
+                                     style="width: 85%"
+                                     converter="#{trabajadorConverter}"
+                                     required="true"
+                                     requiredMessage="Worker is required">
+                        <f:selectItem itemLabel="Select the worker" noSelectionOption="true"/>
+                        <f:selectItems var="servicio" itemLabel="#{servicio.nombre}"
+                                       value="#{administradorBean.trabajadores}"/>
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+
+                <div class="form-group row justify-content-center" style="padding: 5%; text-align: center">
+
+                    <div class="col">
+                        <p:commandButton action="#{administradorBean.registrarServicio()}" value="Register"
+                                         update="@form"
+                                         style="width: 90%;background: #154360; color: white;border-color: black!important;"/>
+                    </div>
+
+                    <div class="col">
+                        <p:button href="/administrador/perfilAdministrador.xhtml" value="Return"
+                                  style="width: 90%;background: #566573 !important; color: white;border-color: black !important"/>
+                    </div>
+                </div>
+                <p:growl showDetail="true"/>
+            </h:form>
+
+        </p:card>
+
+        </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
