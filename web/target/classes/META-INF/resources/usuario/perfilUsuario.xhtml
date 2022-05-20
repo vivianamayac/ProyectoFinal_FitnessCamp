@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+
+<ui:composition template="/WEB-INF/plantilla2.xhtml">
+
+    <ui:define name="title">Profile</ui:define>
+    <ui:define name="content">
+
+        <div class="container" style="margin-top: 5%">
+            <div style="width: 95%">
+                <div class="row">
+                    <div class="col">
+                        <h1 style="font-family: 'Times New Roman', sans-serif">¡Hello #{usuarioBean.usuarioAuxiliar.nombre}!</h1>
+                    </div>
+
+                    <div class="col" style="text-align: right">
+                        <div class="row">
+                            <div class="col">
+                                <p:button icon="pi pi-pencil" styleClass="rounded-button ui-button-flat"
+                                href="/usuario/updateUser.xhtml"
+                                style="background: none!important;border-color: transparent !important;color: black!important;"/>
+
+                            </div>
+                            <div class="col-2" style="text-align: left">
+                                <p:commandButton style="background: none!important;border-color: transparent !important;color: red!important;"
+                                        icon="pi pi-trash" styleClass="rounded-button ui-button-flat"
+                                                 onclick="PF('dlg2').show()"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <h3 style="font-family: 'Times New Roman', sans-serif">Personal information</h3>
+                <br/>
+                <h4 style="font-family: 'Times New Roman', sans-serif">Identifier code: #{usuarioBean.usuarioAuxiliar.id}</h4>
+
+                <h4 style="font-family: 'Times New Roman', sans-serif">Email: #{usuarioBean.usuarioAuxiliar.email}</h4>
+
+                <h4 style="font-family: 'Times New Roman', sans-serif">Phone: #{usuarioBean.usuarioAuxiliar.telefono}</h4>
+                <hr/>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 5%">
+           <div class="card">
+               <div class="card-body">
+                   <div class="card-title">
+                       <div class="row">
+                           <div class="col">
+                               <h2 style="font-family: 'Times New Roman', sans-serif"><b>Nutritional information</b></h2>
+                           </div>
+
+                           <div class="col" style="text-align: right">
+                               <p:commandButton onclick="PF('dlg1').show()"
+                                                icon="pi pi-plus"
+                                                styleClass="rounded-button ui-button-flat"
+                                                style="background: none!important;border-color: transparent !important;color: black!important;"/>
+
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" style="margin-top: 5%">
+                       <div class="col">
+                           <h3 style="font-family: 'Times New Roman', sans-serif">Weight: #{usuarioBean.usuarioAuxiliar.peso} kg</h3>
+                           <br/>
+                           <h3 style="font-family: 'Times New Roman', sans-serif">Measures:#{usuarioBean.usuarioAuxiliar.medidas}</h3>
+                           <br/>
+                           <h3 style="font-family: 'Times New Roman', sans-serif">Height: #{usuarioBean.usuarioAuxiliar.estatura} cm</h3>
+                       </div>
+
+                       <div class="col">
+                           <h3 style="font-family: 'Times New Roman', sans-serif">Average of fat: #{usuarioBean.usuarioAuxiliar.porcentajeGrasa}</h3>
+                           <br/>
+                           <br/>
+                           <br/>
+                           <div class="row">
+                               <div class="col-5">
+                                   <h3 style="font-family: 'Times New Roman', sans-serif">Body mass index:</h3>
+                               </div>
+
+                               <div class="col">
+                                   <h3 style="font-family: 'Times New Roman', sans-serif">#{usuarioBean.imc}</h3>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+
+
+        <div class="container" style="margin-top: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2 style="font-family: 'Times New Roman', sans-serif"><b>Recorded purchases</b></h2>
+                    </div>
+
+                    <p:dataTable id="compras" value="#{usuarioBean.comprasRegistradas}" var="compra" style="margin-bottom: 20px">
+
+                        <p:column style="text-align: center;font-family: 'Times New Roman', sans-serif" headerText="Code">
+                            <h5 style="font-family: 'Times New Roman',sans-serif;">#{compra.id}</h5>
+                        </p:column>
+
+                        <p:column style="text-align: center" headerText="Compra">
+                            <f:facet name="header">
+                                <h:outputText style="font-family: 'Times New Roman',sans-serif;" value="Product(s) to buy"/>
+                            </f:facet>
+                            <p:repeat value="#{compra.listaDetallesCompra}" var="detalle">
+                                <div class="container p-0">
+                                    <div>
+                                        <h5 style="font-family: 'Times New Roman',sans-serif;">#{detalle.producto.nombre}</h5>
+                                    </div>
+                                </div>
+                            </p:repeat>
+                        </p:column>
+
+                        <p:column style="text-align: center;font-family: 'Times New Roman', sans-serif" headerText="Payment method">
+                            <h5 style="font-family: 'Times New Roman',sans-serif;">#{compra.medioPago}</h5>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="margin-top: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2 style="font-family: 'Times New Roman', sans-serif"><b>Reserved services</b></h2>
+                    </div>
+
+                    <p:dataTable id="reservas" value="#{usuarioBean.serviciosReservados}" var="servicio" style="margin-bottom: 20px">
+
+                        <p:column style="text-align: center;font-family: 'Times New Roman', sans-serif" headerText="Code">
+                            <h5 style="font-family: 'Times New Roman',sans-serif;">#{servicio.id}</h5>
+                        </p:column>
+
+                        <p:column style="text-align: center;font-family: 'Times New Roman', sans-serif" headerText="Name">
+                            <h5 style="font-family: 'Times New Roman',sans-serif;">#{servicio.nombre}</h5>
+                        </p:column>
+
+                        <p:column style="text-align: center;font-family: 'Times New Roman', sans-serif" headerText="Description">
+                            <h5 style="font-family: 'Times New Roman',sans-serif;">#{servicio.description}</h5>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+        </div>
+
+
+
+        <h:form>
+            <p:dialog style="font-family: 'Times New Roman',sans-serif;color: black" header="Nutritional information" widgetVar="dlg1" Height="400px" width="50%" showEffect="fade"
+                      closeOnEscape="true" rendered="#{seguridadBean.autenticado}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p:outputLabel for="peso_usuario" value="Weigth:"/>
+                        <p:inputText id="peso_usuario" styleClass="p-d-block"
+                                     value="#{usuarioBean.peso}"
+                                     style="width: 100%"/>
+
+                        <p:outputLabel for="estatura" value="Heigth:"/>
+                        <p:inputText id="estatura"  styleClass="p-d-block"
+                                     value="#{usuarioBean.estatura}"
+                                     style="width: 100%"/>
+                        <br></br>
+                        <p:outputLabel for="medidas" value="Measures"/>
+                        <p:inputText id="medidas"  styleClass="p-d-block"
+                                     value="#{usuarioBean.medidas}"
+                                     style="width: 100%"/>
+                        <br></br>
+                        <p:outputLabel for="average" value="Average of fat"/>
+                        <p:inputText id="average" styleClass="p-d-block"
+                                     value="#{usuarioBean.porcentajeGrasa}"
+                                     style="width: 100%"/>
+
+                    </div>
+
+                    <div class="col-2">
+                        <div class="fotox">
+                            <img src="../resources/img/nutricion.png" alt="" width="200px" height="200px" style="margin-top: 75px"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <f:facet name="footer" >
+                    <div style="text-align: center">
+                        <p:commandButton style="min-width: 30%;color: white" value="Register"
+                                         action="#{usuarioBean.registrarInfoNutricional()}"
+                                         styleClass="ui-button-raised ui-button-success ui-button-flat"
+                                         update="@form" />
+                    </div>
+
+                    <p:growl showDetail="true"/>
+                </f:facet>
+            </p:dialog>
+        </h:form>
+
+        <h:form>
+            <p:dialog header="Confirmation" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade">
+                <p class="p-m-0">Are you sure you want to delete your account?</p>
+                <f:facet name="footer">
+                    <p:commandButton value="Yes" style="width: 5rem" action="#{usuarioBean.eliminarUsuario()}" />
+                    <p:commandButton value="No" onclick="PF('dlg2').hide()" styleClass="ui-button-flat p-mr-2" style="width: 6rem;color: white;background: #566573!important;" />
+                </f:facet>
+            </p:dialog>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
