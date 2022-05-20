@@ -221,6 +221,7 @@ public class UsuarioBean implements Serializable {
                 throw new Exception("No se encontraron registros");
             }
         } catch (Exception e) {
+            
             e.printStackTrace();
         }
         return null;
