@@ -213,7 +213,7 @@ public class UsuarioBean implements Serializable {
                 String asunto = "Recover password";
                 String mensaje = "<span style=\"color:black;font-size: 20px;font-family:'Times New Roman', sans-serif\"><b>Recover password</b></span>";
                 mensaje += "<br><br> Enter the following link:";
-                mensaje += "<br><br><span style=\"color:blue\"><b>localhost:8080//b></span><br><br>";
+                mensaje += "<br><br><span style=\"color:blue\"><b>http://fitnesstcamp3.azurewebsites.net/recoverPassword.xhtml/b></span><br><br>";
                 emailService.enviarEmail(asunto,mensaje,receptor);
 
                 return "/index?faces-redirect=true";
