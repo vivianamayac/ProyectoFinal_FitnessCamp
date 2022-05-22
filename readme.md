@@ -1,14 +1,8 @@
 # Proyecto Final de SOFTWARE 3
 
-Este proyeto representa el codigo que desarrollamos para dar solucion al proyecto final del espacio academico Software 3.
+Este proyecto representa el codigo que desarrollamos para dar solucion al proyecto final del espacio academico Software 3.
 
-## Los integrantes del grupo son:
+El proyecto está desarrollado por: Danna Maya - David Trejos y Viviana Maya
 
-#### Sebastian Quintero Osorio - Braian Camilo Piedrahita Rodriguez
-
-## Descripción del proyecto:
-
-## Amazing Store
-
-Amazing Store es una tienda de venta de perifericos la cual permite a sus compradores vender sus diferentes productos enfocados en el mundo electronico, principalmente se enfoca en la venta de perifericos y dispositivos vinculados con el mundo computacional.
+Fitnesscamp es una plataforma interactiva donde administradores,usuarios, entrenadores pueden realizar todo tipo de servicios relacionados con el gimnasio
 
