@@ -278,9 +278,15 @@ public class AdministradorBean implements Serializable {
 
     public void subirImagenes(FileUploadEvent event) {
 
-        Imagen foto = new Imagen("default.png");
+        UploadedFile imagen = event.getFile();
+        String nombreImagen = subirImagen(imagen);
 
-        imagenes.add(foto);
+        if (nombreImagen != null) {
+
+            Imagen foto = new Imagen(nombreImagen);
+
+            imagenes.add(foto);
+        }
     }
 
 
