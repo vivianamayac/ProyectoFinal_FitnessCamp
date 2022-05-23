@@ -32,7 +32,7 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public Compra crearCompra(Compra c) throws Exception {
+    public Compra crearCompra(Compra c)  {
 
        return compraRepo.save(c);
 
