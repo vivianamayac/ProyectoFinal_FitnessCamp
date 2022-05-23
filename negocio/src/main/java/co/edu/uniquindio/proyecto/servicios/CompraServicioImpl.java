@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto.entidades.Compra;
 import co.edu.uniquindio.proyecto.entidades.DetalleCompra;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
 import co.edu.uniquindio.proyecto.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
@@ -45,7 +46,7 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public Compra agregarCompra(ArrayList<Carrito> productoCarrito, Usuario usuario, String medioPago) throws Exception {
+    public Compra agregarCompra(ArrayList<Carrito> productoCarrito, Usuario usuario, String medioPago) throws FitnesscampException {
         try {
             Compra compra = new Compra();
             compra.setFechaVenta(new Date());
@@ -71,23 +72,26 @@ public class CompraServicioImpl implements CompraServicio {
             }
             return compra;
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            throw new FitnesscampException(e.getMessage());
         }
 
     }
 
     public void quitarUnidades (Integer codigoProducto, Integer unidadesComprada){
        Optional<Producto> producto = productoRepo.findById(codigoProducto);
-       Producto productoActual =producto.get();
-       productoActual.setUnidades(productoActual.getUnidades() - unidadesComprada );
+        if (producto.isPresent()) {
+            Producto productoActual =producto.get();
+            productoActual.setUnidades(productoActual.getUnidades() - unidadesComprada );
+        }
+
     }
 
-    public Compra obtenerCompra(int idCompra) throws Exception{
+    public Compra obtenerCompra(int idCompra) throws FitnesscampException{
 
         Optional<Compra> compraEncontrada = compraRepo.findById(idCompra);
 
         if (compraEncontrada.isEmpty()){
-            throw new Exception("La compra no existe");
+            throw new FitnesscampException("La compra no existe");
         }
 
         return compraEncontrada.get();
@@ -99,23 +103,23 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public Compra obtenerCompraUsuario(int idUsuario, int idCompra) throws Exception {
+    public Compra obtenerCompraUsuario(int idUsuario, int idCompra) throws FitnesscampException {
 
         Optional<Usuario> u = usuarioRepo.findById(idUsuario);
         Optional<Compra> c = compraRepo.findById(idCompra);
 
         if (u.isEmpty()){
-            throw new Exception("El usuario no existe");
+            throw new FitnesscampException("El usuario no existe");
         }
 
         if (c.isEmpty()){
-            throw new Exception("La compra no existe");
+            throw new FitnesscampException("La compra no existe");
         }
 
         Compra compraU = compraRepo.obtenerCompraUsuario(Integer.parseInt(u.get().getId()),c.get().getId());
 
         if (compraU == null) {
-            throw new Exception("El usuario no cuenta con esta compra");
+            throw new FitnesscampException("El usuario no cuenta con esta compra");
         }
 
         return compraU;

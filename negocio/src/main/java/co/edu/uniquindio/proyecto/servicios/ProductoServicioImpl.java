@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 import co.edu.uniquindio.proyecto.repositorios.ImagenRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,16 @@ public class ProductoServicioImpl  implements ProductoServicio {
     }
 
     @Override
-    public Producto registrarProducto(Producto p) throws Exception {
+    public Producto registrarProducto(Producto p) throws FitnesscampException {
 
         if (p.getNombre().length() >100){
-            throw new Exception("El nombre no puede exceder los 100 caracteres");
+            throw new FitnesscampException("El nombre no puede exceder los 100 caracteres");
         }
         return productoRepo.save(p);
     }
 
     @Override
-    public void actualizarProducto(Producto p, String nombre) throws Exception {
+    public void actualizarProducto(Producto p, String nombre) throws FitnesscampException {
 
         Producto producto = obtenerProductoNombre(nombre);
 
@@ -41,13 +42,13 @@ public class ProductoServicioImpl  implements ProductoServicio {
             producto.setDescription(p.getDescription());
             productoRepo.save(producto);
         }else {
-            throw new Exception("No se encontraron coincidencias");
+            throw new FitnesscampException("No se encontraron coincidencias");
         }
 
     }
 
     @Override
-    public void eliminarProducto(int id) throws Exception {
+    public void eliminarProducto(int id) throws FitnesscampException {
 
         Producto productoEncontrado = obtenerProducto(id);
 
@@ -66,29 +67,29 @@ public class ProductoServicioImpl  implements ProductoServicio {
             productoRepo.save(productoEncontrado);
             productoRepo.delete(productoEncontrado);
         }else{
-            throw new Exception("No se encontraron registros");
+            throw new FitnesscampException("No se encontraron registros");
         }
     }
 
     @Override
-    public Producto obtenerProducto(int id) throws Exception {
+    public Producto obtenerProducto(int id) throws FitnesscampException {
 
         Optional<Producto> productoEncontrado = productoRepo.findById(id);
 
         if (productoEncontrado.isEmpty()){
-            throw new Exception("No se encontraron coincidencias");
+            throw new FitnesscampException("No se encontraron coincidencias");
         }
 
         return productoEncontrado.get();
     }
 
     @Override
-    public Producto obtenerProductoNombre(String nombre) throws Exception {
+    public Producto obtenerProductoNombre(String nombre) throws FitnesscampException {
 
         Producto productoEncontrado = productoRepo.obtenerProductoNombre(nombre);
 
         if (productoEncontrado==null){
-            throw new Exception("No se encontraron coincidencias");
+            throw new FitnesscampException("No se encontraron coincidencias");
         }
 
         return productoEncontrado;

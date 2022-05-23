@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -14,40 +15,40 @@ public class CiudadServicioImpl implements CiudadServicio{
     }
 
     @Override
-    public Ciudad registrarCiudad(Ciudad ciudad) throws Exception {
+    public Ciudad registrarCiudad(Ciudad ciudad) throws FitnesscampException {
 
         if (ciudad.getNombre().length()>100){
-            throw new Exception("No puede exceder los 100 caracteres");
+            throw new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         return ciudadRepo.save(ciudad);
     }
 
     @Override
-    public Ciudad actualizarCiudad(Ciudad ciudad) throws Exception {
+    public Ciudad actualizarCiudad(Ciudad ciudad) throws FitnesscampException {
 
         return ciudadRepo.save(ciudad);
     }
 
     @Override
-    public void eliminarCiudad(int id) throws Exception {
+    public void eliminarCiudad(int id) throws FitnesscampException {
 
         Ciudad ciudadEncontrada=obtenerCiudad(id);
 
         if (ciudadEncontrada != null){
             ciudadRepo.delete(ciudadEncontrada);
         }else{
-            throw new Exception("No existe la ciudad");
+            throw new FitnesscampException("No existe la ciudad");
         }
     }
 
     @Override
-    public Ciudad obtenerCiudad(int id) throws Exception {
+    public Ciudad obtenerCiudad(int id) throws FitnesscampException {
 
         Optional<Ciudad> ciudad= ciudadRepo.findById(id);
 
         if (ciudad.isEmpty()){
-            throw new Exception("La ciudad no existe");
+            throw new FitnesscampException("La ciudad no existe");
         }
 
         return ciudad.get();

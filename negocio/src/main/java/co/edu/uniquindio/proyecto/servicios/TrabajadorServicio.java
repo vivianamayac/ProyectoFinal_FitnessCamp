@@ -1,22 +1,23 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 
 import java.util.List;
 
 public interface TrabajadorServicio {
 
-    Trabajador registrarTrabajador(Trabajador t) throws Exception;
+    Trabajador registrarTrabajador(Trabajador t) throws FitnesscampException;
 
-    void actualizarTrabajador(Trabajador t,String email,String password) throws Exception;
+    void actualizarTrabajador(Trabajador t,String email,String password) throws FitnesscampException;
 
-    void eliminarTrabajador(String email,String password) throws Exception;
+    void eliminarTrabajador(String email,String password) throws FitnesscampException;
 
-    Trabajador obtenerTrabajador(String id) throws Exception;
+    Trabajador obtenerTrabajador(String id) throws FitnesscampException;
 
-    Trabajador obtenerTrabajadorNombre(String nombre) throws Exception;
+    Trabajador obtenerTrabajadorNombre(String nombre) throws FitnesscampException;
 
     List<Trabajador> listarTrabajadores();
 
-    Trabajador obtenerEmailPassword(String email, String password) throws Exception;
+    Trabajador obtenerEmailPassword(String email, String password) throws FitnesscampException;
 }

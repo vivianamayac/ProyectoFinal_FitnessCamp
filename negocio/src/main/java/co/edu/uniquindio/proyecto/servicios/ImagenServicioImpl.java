@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 import co.edu.uniquindio.proyecto.repositorios.ImagenRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
@@ -19,56 +20,56 @@ public class ImagenServicioImpl implements ImagenServicio{
     }
 
     @Override
-    public Imagen registrarImagen(Imagen i) throws Exception {
+    public Imagen registrarImagen(Imagen i) throws FitnesscampException {
 
         if (i.getUrl().length() > 100){
-            throw  new Exception("No puede exceder los 100 caracteres");
+            throw  new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         return imagenRepo.save(i);
     }
 
     @Override
-    public Imagen actualizarImagen(Imagen i) throws Exception {
+    public Imagen actualizarImagen(Imagen i) throws FitnesscampException {
 
         if (i.getUrl().length() > 100){
-            throw  new Exception("No puede exceder los 100 caracteres");
+            throw  new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         return imagenRepo.save(i);
     }
 
     @Override
-    public void eliminarImagen(int id) throws Exception {
+    public void eliminarImagen(int id) throws FitnesscampException {
 
         Imagen imagenEncontrada = obtenerImagen(id);
 
         if(imagenEncontrada != null){
             imagenRepo.delete(imagenEncontrada);
         }else {
-            throw new Exception("No existe la url");
+            throw new FitnesscampException("No existe la url");
         }
     }
 
     @Override
-    public List<Imagen> obtenerImagenesProducto(int idProducto) throws Exception {
+    public List<Imagen> obtenerImagenesProducto(int idProducto) throws FitnesscampException {
 
         List<Imagen> imagenes = productoRepo.obtenerImagenes(idProducto) ;
 
         if(imagenes ==null){
-            throw new Exception("El producto no cuenta con imágenes");
+            throw new FitnesscampException("El producto no cuenta con imágenes");
         }
 
         return imagenes;
     }
 
     @Override
-    public Imagen obtenerImagen(int id) throws Exception {
+    public Imagen obtenerImagen(int id) throws FitnesscampException {
 
         Optional<Imagen> imagen = imagenRepo.findById(id);
 
         if(imagen.isEmpty()){
-            throw  new Exception("No se encontró la url");
+            throw  new FitnesscampException("No se encontró la url");
         }
         return imagen.get();
     }
