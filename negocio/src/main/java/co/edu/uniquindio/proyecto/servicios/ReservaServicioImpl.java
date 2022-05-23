@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Reserva;
-import co.edu.uniquindio.proyecto.entidades.Servicio;
 import co.edu.uniquindio.proyecto.repositorios.ReservaRepo;
-import co.edu.uniquindio.proyecto.repositorios.ServicioRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

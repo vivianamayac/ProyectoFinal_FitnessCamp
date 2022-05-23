@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.bean;
 
-import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
+import co.edu.uniquindio.proyecto.entidades.Persona;
+import co.edu.uniquindio.proyecto.entidades.Reserva;
+import co.edu.uniquindio.proyecto.entidades.Servicio;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.servicios.ReservaServicio;
 import co.edu.uniquindio.proyecto.servicios.ServicioServicio;
 import lombok.Getter;

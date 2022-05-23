@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Reserva;
-import co.edu.uniquindio.proyecto.entidades.Servicio;
 
 import java.util.List;
 

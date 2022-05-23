@@ -121,6 +121,80 @@ public class InformacionPorDefecto implements CommandLineRunner {
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
             imagenServicio.registrarImagen(img3);
 
+            Producto producto4 = new Producto("Kelbet","For fitness enthusiasts. Includes 4 Pods with plenty of predefined activities and the ability to create your own for enhancing your workouts.",72.883,admin1);
+            producto4.setUnidades(3);
+            admin1.getProductos().add(producto4);
+            Imagen img4 = new Imagen("Kelbet.png");
+            img4.setProducto(producto4);
+            producto4.getImagenes().add(img4);
+            productoServicio.registrarProducto(producto4);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img4);
+
+            Producto producto5 = new Producto("Weight lifting","Lift the Pods off the ground with one of the unique BlazePod adapters.",72.883,admin1);
+            producto5.setUnidades(3);
+            admin1.getProductos().add(producto5);
+            Imagen img5 = new Imagen("Pesa.png");
+            img3.setProducto(producto5);
+            producto3.getImagenes().add(img5);
+            productoServicio.registrarProducto(producto5);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img5);
+
+
+            Producto producto6 = new Producto("Weight instrument","The FRX trainer course by BlazePod is an online course. The participant can enter and re-enter the course at will within a 30-day time limit. The course is compiled of 10 video lessons of various lengths.",72.883,admin1);
+            producto6.setUnidades(3);
+            admin1.getProductos().add(producto6);
+            Imagen img6 = new Imagen("Pesas.png");
+            img3.setProducto(producto6);
+            producto3.getImagenes().add(img6);
+            productoServicio.registrarProducto(producto6);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img6);
+
+            Producto producto7 = new Producto("Powerful Machine to train full body","The Wall-Mounted Hanger was designed to keep your TANK™ M1 up off the ground in order to save you precious training space.",72.883,admin1);
+            producto7.setUnidades(3);
+            admin1.getProductos().add(producto7);
+            Imagen img7 = new Imagen("maquina1.png");
+            img3.setProducto(producto7);
+            producto3.getImagenes().add(img7);
+            productoServicio.registrarProducto(producto7);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img7);
+
+            Producto producto8 = new Producto("","",72.883,admin1);
+            producto8.setUnidades(3);
+            admin1.getProductos().add(producto8);
+            Imagen img8 = new Imagen("parlante.png");
+            img3.setProducto(producto8);
+            producto3.getImagenes().add(img8);
+            productoServicio.registrarProducto(producto8);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img8);
+
+            Producto producto9 = new Producto("TANK M1 ","The Tow Rope adds endless variety in rope and pulling exercises to any TANK push sled.",72.883,admin1);
+            producto9.setUnidades(3);
+            admin1.getProductos().add(producto9);
+            Imagen img9 = new Imagen("banco.png");
+            img3.setProducto(producto9);
+            producto3.getImagenes().add(img9);
+            productoServicio.registrarProducto(producto9);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img9);
+
+
+            Producto producto10 = new Producto("Multifunctional","Designed for functionality & performance, Rubber Hex Dumbbells in various weight",72.883,admin1);
+            producto10.setUnidades(3);
+            admin1.getProductos().add(producto10);
+            Imagen img10 = new Imagen("multifuncional.png");
+            img3.setProducto(producto10);
+            producto3.getImagenes().add(img10);
+            productoServicio.registrarProducto(producto10);
+            administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
+            imagenServicio.registrarImagen(img10);
+
+
+
 
         }
     }

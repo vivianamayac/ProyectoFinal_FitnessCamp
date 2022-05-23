@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Imagen;
-
 import java.util.List;
 
 public interface ImagenServicio {

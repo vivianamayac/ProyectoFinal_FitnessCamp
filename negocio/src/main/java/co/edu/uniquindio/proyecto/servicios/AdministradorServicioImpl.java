@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios;
-
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
