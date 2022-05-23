@@ -62,8 +62,7 @@ public class CompraServicioImpl implements CompraServicio {
                     detalle.setCompra(compra);
                     detalle.setPrecioProducto(p.getPrecio());
                     detalle.setUnidades(p.getUnidades());
-                    detalle.setProducto(productoRepo.findById(p.getId()).get());
-                    //Verificar las unidades
+                    detalle.setProducto(productoRepo.findById(p.getId()).orElse(null));
                     quitarUnidades(p.getId(), p.getUnidades());
                     detalleCompraRepo.save(detalle);
                     lista.add(detalle);
