@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/plantilla2.xhtml">
+    <ui:define name="title"> Confirmation </ui:define>
+    <ui:define name="content">
+
+        <h:form id="form">
+            <div class="container" style="margin-top: 5%">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body" style="height: 100%">
+                                <div class="card-title">
+                                    <h2 style="font-family: 'Times New Roman', sans-serif"><b>Payment details</b></h2>
+                                </div>
+                                <h3><p:outputLabel for="nombre_user" value="Name:"/></h3>
+                                <p:inputText id="nombre_user"
+                                             value="#{seguridadBean.usuario.nombre}"
+                                             style="width: 100%"
+                                             placeholder="Enter your name"
+                                             required="true"
+                                             requiredMessage="Name is required"/>
+
+                                <h5 style="margin-top: 5%;font-family: 'Times New Roman', sans-serif">Payment method: <b style="color: #154360">credit card</b></h5>
+                                <h3 style="margin-top: 3%"><p:outputLabel for="tarjeta_user" value="Card number:"/></h3>
+                                <p:inputText id="tarjeta_user"
+                                             style="width: 100%"
+                                             value="#{seguridadBean.numTarjeta}"
+                                             placeholder="Enter your credit card number"
+                                             required="true"
+                                             requiredMessage="Card number is required"/>
+
+
+                                <h3><p:outputLabel for="month" value="Date card:"/></h3>
+                                    <p:datePicker id="month" view="month" pattern="MM/yyyy" yearNavigator="true" yearRange="2000:2030"
+                                                  style="width: 100% !important;"
+                                                  value="#{seguridadBean.fechaTarjeta}"
+                                                  required="true"
+                                                  requiredMessage="Date card is required"/>
+
+
+                                <h3><p:outputLabel for="codigo_tarjeta" value="Card code:"/></h3>
+                                <p:inputText id="codigo_tarjeta"
+                                             style="width: 100%"
+                                             value="#{seguridadBean.codTarjeta}"
+                                             placeholder="Enter your credit card code"
+                                             required="true"
+                                             requiredMessage="Card code is required"/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card" style="border: none">
+                            <div class="card-body" style="min-height: 100%">
+                                <div class="card-title">
+                                    <h2 style="font-family: 'Times New Roman', sans-serif"><b>Summary of purchase</b></h2>
+                                </div>
+
+                                <div style="margin-top: 3%">
+                                    <h5 style="font-family: 'Times New Roman', sans-serif"><b>Your purchase</b></h5>
+
+                                    <div class="row" style="margin-top: 8%">
+                                        <div class="col-8">
+                                            <div class="title">
+                                                <h5 style="font-family: 'Times New Roman',sans-serif;color: #154360"><b>Products</b></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="title">
+                                                <h5 style="font-family: 'Times New Roman', sans-serif;color: #154360"><b>Cost</b></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <p:repeat value="#{seguridadBean.productosCarrito}" var="producto">
+                                        <div class="container p-0">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <h6>#{producto.nombre}</h6>
+                                                </div>
+                                                <div class="col">
+                                                    <h6>#{producto.precio}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p:repeat>
+
+                                    <hr/>
+                                    <div class="row" style="margin-top: 5%">
+                                        <div class="col-8">
+                                            <h5 style="font-family: 'Times New Roman', sans-serif"><b>Total to pay</b></h5>
+                                        </div>
+                                        <div class="col">
+                                            <h5>$ #{seguridadBean.subtotal}</h5>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 8%">
+                                        <p:commandButton value="Purchase" update="@form" styleClass="ui-button-info"
+                                                         style="border-color: black!important;background: #154360!important;"
+                                                        action="#{seguridadBean.comprarM()}"/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

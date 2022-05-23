@@ -1,0 +1,149 @@
+#card-index {
+    background: url(../resources/img/Main.png) no-repeat !important;
+    background-size: 100vw 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    border:none;
+}
+
+#body-worker {
+    content: '';
+    background: url(../resources/img/entrenador-fitness.png) no-repeat !important;
+    background-size: cover;
+    -webkit-background-clip: text;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#body-worker:before {
+    content: '';
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#3A3737, #3A3737);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+#card-i1{
+    background: url(../resources/img/Womenfit.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-i1:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+#card-i2{
+    background: url(../resources/img/3.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-i2:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+#card-i3{
+    background: url(../resources/img/2.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-i3:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+#card-i4{
+    background: url(../resources/img/Fitcombat.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-i5{
+    background: url(../resources/img/Fisio.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-i6{
+    background: url(../resources/img/Nutricion.jpg) no-repeat !important;
+    background-size: cover;
+    border:none;
+}
+
+#card-index:before {
+    content: '';
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#3A3737, #3A3737);
+    opacity: 0.7;
+}
+
+#container-text-index {
+    text-align: center;
+    color: white;
+    display: inline-block; !important;
+    font-family: 'Times New Roman',sans-serif;
+    transform: scaleZ(3);
+    min-width: 100vw;
+    align-items: center;
+    background: transparent;
+    margin-top: 3.5%;
+}
+
+
+#password {
+    content: '';
+    background: url(../resources/img/Main.png) no-repeat !important;
+    background-size: cover;
+    -webkit-background-clip: text;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#password:before {
+    content: '';
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#3A3737, #3A3737);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+
+body .ui-dataview .ui-dataview-header {
+    visibility: hidden !important;
+}
+
+body .ui-galleria.ui-galleria-indicator-onitem .ui-galleria-indicators{
+    background: none!important;
+}
+
+#info-detal{
+    width: 100%;
+    min-height: 100%;
+    -webkit-box-shadow: 0 5px 26px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 26px 8px rgba(0,0,0,0.3);
+}
+
+body .ui-button{
+    background: #154360 !important;
+    border-color: black !important;
+}

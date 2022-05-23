@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/plantilla2.xhtml">
+    <ui:define name="title"> Buy </ui:define>
+    <ui:define name="content">
+
+        <h:form id="form">
+            <div class="container" style="margin-top: 5%">
+                <div class="card" style="width: 100%; border: none">
+                    <div class="container" style="padding: 0">
+                        <div class="card-body" style="min-height: 100%;">
+                            <div class="card-title">
+                                <h2 style="font-family:'Times New Roman', sans-serif"><b>Products to buy</b></h2>
+                            </div>
+
+                            <p:repeat value="#{seguridadBean.productosCarrito}" var="producto" varStatus="p" >
+                                <div class="container p-0" style="margin-top: 5%">
+                                    <div class="row">
+                                        <div class="col-md-4" style="text-align: center">
+                                            <p:graphicImage value="/uploads/#{producto.imagen}"
+                                                            style="width: 180px; height: 180px"/>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="title" style="margin-top: 10%">
+                                                <h4 style="font-family:'Times New Roman', sans-serif"><b>#{producto.nombre}</b></h4>
+                                            </div>
+
+                                            <h6 style="margin-top: 5%;font-family:'Times New Roman', sans-serif"><b>$ #{producto.precio}</b></h6>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="container">
+                                                <div style="margin-top: 10%">
+                                                    <p:spinner class="form-control form-control-sm"
+                                                               value="#{producto.unidades}" min="1" max="10">
+                                                        <p:ajax listener="#{seguridadBean.actualizarSubtotal}"
+                                                                update="@form"/>
+                                                    </p:spinner>
+                                                </div>
+
+                                                <div style="margin-top: 3%;text-align: right">
+                                                    <p:commandButton icon="pi pi-trash"
+                                                                     iconPos="left"
+                                                                     value="Remove"
+                                                                     styleClass="btn btn-danger"
+                                                                     action="#{seguridadBean.eliminarDelCarrito(p.index)}"
+                                                                     update="@form"
+                                                                     style="width: 100%;background: #E52B1B!important; border-color: black!important;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </p:repeat>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border: none;margin-top: 5%">
+                    <div class="card-body">
+                        <div class="card-title" style="text-align: left">
+                            <h2 style="font-family:'Times New Roman', sans-serif"><b>Total to pay</b></h2>
+                            <h4 style="font-family: 'Times New Roman', sans-serif">$ #{seguridadBean.subtotal}</h4>
+                        </div>
+
+                        <div>
+                            <p:button  rendered="#{seguridadBean.autenticado and seguridadBean.productosCarrito.size() !=0}"
+                                       value="Checkout"
+                                       styleClass="ui-button-success"
+                                       href="/usuario/confirmation.xhtml"
+                                       style="margin-top: 3%;background: #154360 !important;border-color: black;color: white!important"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
