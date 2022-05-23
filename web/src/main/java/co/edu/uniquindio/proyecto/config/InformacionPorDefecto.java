@@ -135,8 +135,8 @@ public class InformacionPorDefecto implements CommandLineRunner {
             producto5.setUnidades(3);
             admin1.getProductos().add(producto5);
             Imagen img5 = new Imagen("Pesa.png");
-            img3.setProducto(producto5);
-            producto3.getImagenes().add(img5);
+            img5.setProducto(producto5);
+            producto5.getImagenes().add(img5);
             productoServicio.registrarProducto(producto5);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
             imagenServicio.registrarImagen(img5);
@@ -146,7 +146,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
             producto6.setUnidades(3);
             admin1.getProductos().add(producto6);
             Imagen img6 = new Imagen("Pesas.png");
-            img3.setProducto(producto6);
+            img6.setProducto(producto6);
             producto3.getImagenes().add(img6);
             productoServicio.registrarProducto(producto6);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
@@ -156,7 +156,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
             producto7.setUnidades(3);
             admin1.getProductos().add(producto7);
             Imagen img7 = new Imagen("maquina1.png");
-            img3.setProducto(producto7);
+            img7.setProducto(producto7);
             producto3.getImagenes().add(img7);
             productoServicio.registrarProducto(producto7);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
@@ -166,7 +166,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
             producto8.setUnidades(3);
             admin1.getProductos().add(producto8);
             Imagen img8 = new Imagen("parlante.png");
-            img3.setProducto(producto8);
+            img8.setProducto(producto8);
             producto3.getImagenes().add(img8);
             productoServicio.registrarProducto(producto8);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
@@ -176,26 +176,21 @@ public class InformacionPorDefecto implements CommandLineRunner {
             producto9.setUnidades(3);
             admin1.getProductos().add(producto9);
             Imagen img9 = new Imagen("banco.png");
-            img3.setProducto(producto9);
+            img9.setProducto(producto9);
             producto3.getImagenes().add(img9);
             productoServicio.registrarProducto(producto9);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
             imagenServicio.registrarImagen(img9);
 
-
             Producto producto10 = new Producto("Multifunctional","Designed for functionality & performance, Rubber Hex Dumbbells in various weight",72.883,admin1);
             producto10.setUnidades(3);
             admin1.getProductos().add(producto10);
             Imagen img10 = new Imagen("multifuncional.png");
-            img3.setProducto(producto10);
+            img10.setProducto(producto10);
             producto3.getImagenes().add(img10);
             productoServicio.registrarProducto(producto10);
             administradorServicio.actualizarAdministrador(admin1,admin1.getEmail(),admin1.getPassword());
             imagenServicio.registrarImagen(img10);
-
-
-
-
         }
     }
 }
