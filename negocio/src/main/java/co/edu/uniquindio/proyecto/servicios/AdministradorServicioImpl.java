@@ -9,6 +9,8 @@ import java.util.Optional;
 @Service
 public class AdministradorServicioImpl implements AdministradorServicio{
 
+
+
     private final AdministradorRepo administradorRepo;
 
 
@@ -25,16 +27,18 @@ public class AdministradorServicioImpl implements AdministradorServicio{
     @Override
     public Administrador registrarAdministrador(Administrador a) throws FitnesscampException {
 
+        String excesoCaracteres= "No puede exceder los 100 caracteres";
+
         if (a.getEmail().length()>100){
-            throw new FitnesscampException("No puede exceder los 100 caracteres");
+            throw new FitnesscampException(excesoCaracteres);
         }
 
         if (a.getNombre().length()>100){
-            throw new FitnesscampException("No puede exceder los 100 caracteres");
+            throw new FitnesscampException(excesoCaracteres);
         }
 
         if (a.getPassword().length()>100){
-            throw new FitnesscampException("No puede exceder los 100 caracteres");
+            throw new FitnesscampException(excesoCaracteres);
         }
 
         if(estaDisponible(a.getEmail())){

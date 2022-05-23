@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class ReservaServicioImpl implements ReservaServicio{
 
+    public static final String SIN_COINCIDENCIA = "No se encontraron coincidencias en el sistema" ;
     private final ReservaRepo reservaRepo;
 
     public ReservaServicioImpl(ReservaRepo reservaRepo) {
@@ -31,7 +32,7 @@ public class ReservaServicioImpl implements ReservaServicio{
         if (reservaEncontrado!=null){
             reservaRepo.save(reservaEncontrado);
         }else {
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
     }
 
@@ -43,7 +44,7 @@ public class ReservaServicioImpl implements ReservaServicio{
         if (reservaEncontrado!= null){
             reservaRepo.delete(reservaEncontrado);
         }else {
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
     }
 
@@ -54,7 +55,7 @@ public class ReservaServicioImpl implements ReservaServicio{
 
         if (reservaEncontrado.isEmpty()){
 
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
         return reservaEncontrado.get();
     }

@@ -13,6 +13,7 @@ import java.util.Optional;
 @Transactional
 public class PersonaServicioImpl implements PersonaServicio{
 
+    public static final String SIN_COINCIDENCIA = "No se encontraron coincidencias en el sistema" ;
     @Autowired
     private PersonaRepo personaRepo;
 
@@ -22,7 +23,7 @@ public class PersonaServicioImpl implements PersonaServicio{
         Optional<Persona> persona = personaRepo.findByEmailAndPassword(email,password);
 
         if (persona.isEmpty()){
-            throw new FitnesscampException("No se encontraron coincidencias en el sistema");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return persona.get();
@@ -36,7 +37,7 @@ public class PersonaServicioImpl implements PersonaServicio{
 
         if(personaEncontrada.isEmpty()){
 
-            throw new FitnesscampException("No se encontraron coincidencias en el sistema");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
         return personaEncontrada.get();
     }
@@ -51,7 +52,7 @@ public class PersonaServicioImpl implements PersonaServicio{
             personaEncontrada.setPassword(passwordN);
             personaRepo.save(personaEncontrada);
         }else{
-            throw new FitnesscampException("No se encontraron coincidencias en el sistema");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
     }

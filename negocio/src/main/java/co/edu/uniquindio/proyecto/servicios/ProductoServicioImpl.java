@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class ProductoServicioImpl  implements ProductoServicio {
 
+    public static final String SIN_COINCIDENCIA = "No se encontraron coincidencias en el sistema" ;
     private final ProductoRepo productoRepo;
     private final ImagenRepo imagenRepo;
 
@@ -42,7 +43,7 @@ public class ProductoServicioImpl  implements ProductoServicio {
             producto.setDescription(p.getDescription());
             productoRepo.save(producto);
         }else {
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA );
         }
 
     }
@@ -77,7 +78,7 @@ public class ProductoServicioImpl  implements ProductoServicio {
         Optional<Producto> productoEncontrado = productoRepo.findById(id);
 
         if (productoEncontrado.isEmpty()){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA );
         }
 
         return productoEncontrado.get();
@@ -89,7 +90,7 @@ public class ProductoServicioImpl  implements ProductoServicio {
         Producto productoEncontrado = productoRepo.obtenerProductoNombre(nombre);
 
         if (productoEncontrado==null){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA );
         }
 
         return productoEncontrado;

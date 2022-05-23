@@ -9,7 +9,7 @@ import java.util.*;
 
 @Service
 public class TrabajadorServicioImpl implements TrabajadorServicio {
-
+    public static final String SIN_COINCIDENCIA = "No se encontraron coincidencias en el sistema" ;
     private final TrabajadorRepo trabajadorRepo;
     private final AdministradorRepo administradorRepo;
     private final ServicioRepo servicioRepo;
@@ -93,7 +93,7 @@ public class TrabajadorServicioImpl implements TrabajadorServicio {
             administradorRepo.save(admin);
             trabajadorRepo.delete(trabajadorEncontrado);
         } else {
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
     }
 
@@ -103,7 +103,7 @@ public class TrabajadorServicioImpl implements TrabajadorServicio {
         Optional<Trabajador> trabajador = trabajadorRepo.findById(id);
 
         if(trabajador.isEmpty()){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return trabajador.get();
@@ -115,7 +115,7 @@ public class TrabajadorServicioImpl implements TrabajadorServicio {
         Optional<Trabajador> trabajador = trabajadorRepo.findByNombre(nombre);
 
         if(trabajador.isEmpty()){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return trabajador.get();
@@ -128,7 +128,7 @@ public class TrabajadorServicioImpl implements TrabajadorServicio {
 
         if(trabajador == null){
 
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
         return trabajador;
     }

@@ -8,7 +8,7 @@ import java.util.*;
 
 @Service
 public class UsuarioServicioImpl implements UsuarioServicio {
-
+    public static final String SIN_COINCIDENCIA = "No se encontraron coincidencias en el sistema" ;
     private final UsuarioRepo usuarioRepo;
 
 
@@ -56,7 +56,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
             usuarioEncontrado.setFechaTarjeta(fecha);
             usuarioRepo.save(usuarioEncontrado);
         }else{
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
     }
 
@@ -83,7 +83,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         if (usuarioEncontrado != null){
             usuarioRepo.delete(usuarioEncontrado);
         }else{
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
     }
 
@@ -93,7 +93,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Optional<Usuario> usuario = usuarioRepo.findById(id);
 
         if(usuario.isEmpty()){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return usuario.get();
@@ -105,7 +105,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario usuario = usuarioRepo.findByNombre(nombre);
 
         if(usuario == null){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return usuario;
@@ -117,7 +117,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario usuario = usuarioRepo.findByEmail(correo);
 
         if(usuario == null){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return usuario;
@@ -129,7 +129,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario usuario = usuarioRepo.findByEmailAndPassword(email,password);
 
         if(usuario==null){
-            throw new FitnesscampException("No se encontraron coincidencias");
+            throw new FitnesscampException(SIN_COINCIDENCIA);
         }
 
         return usuario;
