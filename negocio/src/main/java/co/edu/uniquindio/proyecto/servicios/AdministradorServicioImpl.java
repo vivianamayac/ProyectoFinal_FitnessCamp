@@ -46,7 +46,7 @@ public class AdministradorServicioImpl implements AdministradorServicio{
 
 
     @Override
-    public void actualizarAdministrador(Administrador a,String email, String password) throws Exception {
+    public void actualizarAdministrador(Administrador a,String email, String password) throws FitnesscampException {
 
         Administrador administradorObtenido = obtenerEmailPassword(email,password);
 
@@ -57,34 +57,34 @@ public class AdministradorServicioImpl implements AdministradorServicio{
     }
 
     @Override
-    public void eliminarAdministrador(String email) throws Exception {
+    public void eliminarAdministrador(String email) throws FitnesscampException {
         Administrador administradorEncontrado = obtenerAdministradorEmail(email);
 
         if (administradorEncontrado  != null){
            administradorRepo.delete(administradorEncontrado);
         } else {
-            throw new Exception("Lo sentimos, no hemos encontrado el administrador");
+            throw new FitnesscampException("Lo sentimos, no hemos encontrado el administrador");
         }
     }
 
     @Override
-    public Administrador obtenerAdministrador(String id) throws Exception {
+    public Administrador obtenerAdministrador(String id) throws FitnesscampException {
         Optional<Administrador> administrador = administradorRepo.findById(id);
 
         if(administrador.isEmpty()){
-            throw new Exception("No existe un admin con la cédula ingresada");
+            throw new FitnesscampException("No existe un admin con la cédula ingresada");
         }
 
         return administrador.get();
     }
 
     @Override
-    public Administrador obtenerAdministradorEmail(String email) throws Exception {
+    public Administrador obtenerAdministradorEmail(String email) throws FitnesscampException {
 
         Optional<Administrador> administrador = administradorRepo.findByEmail(email);
 
         if(administrador.isEmpty()){
-            throw new Exception("No existe un administrador con los datos ingresados");
+            throw new FitnesscampException("No existe un administrador con los datos ingresados");
         }
 
         return administrador.get();
@@ -112,13 +112,13 @@ public class AdministradorServicioImpl implements AdministradorServicio{
     }
 
     @Override
-    public Administrador obtenerEmailPassword(String email, String password) throws Exception {
+    public Administrador obtenerEmailPassword(String email, String password) throws FitnesscampException {
 
         Administrador administrador =administradorRepo.findByEmailAndPassword(email, password);
 
         if(administrador == null){
 
-            throw new Exception("No existe una cuenta con estos datos");
+            throw new FitnesscampException("No existe una cuenta con estos datos");
         }
 
         return administrador;

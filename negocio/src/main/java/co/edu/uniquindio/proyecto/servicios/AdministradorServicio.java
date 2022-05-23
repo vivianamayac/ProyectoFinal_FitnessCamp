@@ -11,13 +11,13 @@ public interface AdministradorServicio {
 
     Administrador registrarAdministrador(Administrador a) throws FitnesscampException;
 
-    void actualizarAdministrador(Administrador a,String email,String password) throws Exception;
+    void actualizarAdministrador(Administrador a,String email,String password) throws FitnesscampException;
 
-    void eliminarAdministrador(String email) throws Exception;
+    void eliminarAdministrador(String email) throws FitnesscampException;
 
-    Administrador obtenerAdministrador(String id) throws Exception;
+    Administrador obtenerAdministrador(String id) throws FitnesscampException;
 
-    Administrador obtenerAdministradorEmail(String email) throws Exception;
+    Administrador obtenerAdministradorEmail(String email) throws FitnesscampException;
 
     List<Trabajador> obtenerTrabajadoresAdmin(String nombreAdmin);
 
@@ -27,5 +27,5 @@ public interface AdministradorServicio {
 
     List<Administrador> listarAdministradores();
 
-    Administrador obtenerEmailPassword(String email,String password) throws Exception;
+    Administrador obtenerEmailPassword(String email,String password) throws FitnesscampException;
 }
