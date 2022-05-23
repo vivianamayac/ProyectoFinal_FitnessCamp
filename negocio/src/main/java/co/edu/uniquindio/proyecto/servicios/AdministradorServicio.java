@@ -3,12 +3,13 @@ import co.edu.uniquindio.proyecto.entidades.Administrador;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Servicio;
 import co.edu.uniquindio.proyecto.entidades.Trabajador;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 
 import java.util.List;
 
 public interface AdministradorServicio {
 
-    Administrador registrarAdministrador(Administrador a) throws Exception;
+    Administrador registrarAdministrador(Administrador a) throws FitnesscampException;
 
     void actualizarAdministrador(Administrador a,String email,String password) throws Exception;
 

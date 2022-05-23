@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.exception.FitnesscampException;
 import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,22 +23,22 @@ public class AdministradorServicioImpl implements AdministradorServicio{
     }
 
     @Override
-    public Administrador registrarAdministrador(Administrador a) throws Exception {
+    public Administrador registrarAdministrador(Administrador a) throws FitnesscampException {
 
         if (a.getEmail().length()>100){
-            throw new Exception("No puede exceder los 100 caracteres");
+            throw new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         if (a.getNombre().length()>100){
-            throw new Exception("No puede exceder los 100 caracteres");
+            throw new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         if (a.getPassword().length()>100){
-            throw new Exception("No puede exceder los 100 caracteres");
+            throw new FitnesscampException("No puede exceder los 100 caracteres");
         }
 
         if(estaDisponible(a.getEmail())){
-            throw new Exception("Ya existe una cuenta vinculada a este correo");
+            throw new FitnesscampException("Ya existe una cuenta vinculada a este correo");
         }
 
         return administradorRepo.save(a);
